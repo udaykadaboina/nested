@@ -1,0 +1,37 @@
+<script>
+    $(document).ready(function(){
+		$("#treeDiv").jstree({
+			"plugins" : [ "html_data", "types", "themes", "checkbox", "sort" ]});	
+    });
+</script>
+
+<h1>Listing data_sets</h1>
+
+<div id="treeDiv">
+	<% stack = Array.new %>
+	<% last_level = 0 %>
+	<ul>
+	<% @data_set_roots.each do |root| %>
+		<% stack.push(root) %>
+		<% while !stack.empty? %>
+			<% node = stack.pop %>
+			<% if node.level < last_level %>
+				</li></ul>
+			<% end %>
+			<li><a><%= node.name %></a>
+			<% last_level = node.level %>
+			<% if !node.children.empty? %>
+				<ul>
+				<% node.children.each do |child| %>
+					<% stack.push(child) %>
+				<% end %>
+			<% end %>
+		<% end %>			
+	<% end %>
+	</ul>
+</div>
+
+<br />
+
+<%= link_to 'New Data set', new_data_set_path %>
+

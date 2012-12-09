@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @data_set.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @data_set.url %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @data_set.parent_id %>
+</p>
+
+<p>
+  <b>Lft:</b>
+  <%= @data_set.lft %>
+</p>
+
+<p>
+  <b>Rgt:</b>
+  <%= @data_set.rgt %>
+</p>
+
+
+<%= link_to 'Edit', edit_data_set_path(@data_set) %> |
+<%= link_to 'Back', data_sets_path %>
